@@ -17,10 +17,30 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path
+from django.contrib.auth import views as auth_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),  # Ya no usamos 'global/', usamos directamente ''
     path('', include('inicio.urls')),
-    path('', include('web.urls')),
+    path('', include('citas.urls')),
+    path('', include('cuentas.urls')),
+    path('', include('dashboard.urls')),
+    path('', include('fechas.urls')),
+    path('', include('inicio.urls')),
+    path('', include('inventario.urls')),
+    path('', include('ventas.urls')),
+    path('', include('productos.urls')),
+    path('', include('promociones.urls')),
+    path('', include('categorias.urls')),
+    path('gmail/', include('gmail_integration.urls')),
+    
+    
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

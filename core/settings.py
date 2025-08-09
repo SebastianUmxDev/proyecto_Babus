@@ -18,6 +18,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+# Path to the credentials file for Gmail integration
+os.path.join(BASE_DIR, 'config', 'credentials.json')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -41,11 +43,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.inventario',
-    'apps.usuarios',
     'apps.ventas',
     'apps.web',
-    'apps.global',
-    'apps.inicio'
+    'apps.inicio',
+    'apps.citas',   
+    'apps.cuentas',
+    'apps.fechas',
+    'apps.gmail_integration',
+    'apps.dashboard',
+    'apps.productos',
+    'apps.promociones',
+    'apps.categorias',
+    
 
 ]
 
@@ -87,7 +96,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'babus',
+        'NAME': 'babus3',
         'USER': 'root',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
@@ -151,10 +160,12 @@ STATICFILES_DIRS = [BASE_DIR / 'apps' / 'static']
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'inicio.UserProfile'
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Reemplaza con el servidor SMTP de tu proveedor
 EMAIL_PORT = 587  # Puerto SMTP, generalmente 587 para TLS
