@@ -27,7 +27,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),  # Ya no usamos 'global/', usamos directamente ''
     path('', include('inicio.urls')),
-    path('', include('citas.urls')),
     path('', include('cuentas.urls')),
     path('', include('dashboard.urls')),
     path('', include('fechas.urls')),

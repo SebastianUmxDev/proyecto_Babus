@@ -45,8 +45,7 @@ INSTALLED_APPS = [
     'apps.inventario',
     'apps.ventas',
     'apps.web',
-    'apps.inicio',
-    'apps.citas',   
+    'apps.inicio',  
     'apps.cuentas',
     'apps.fechas',
     'apps.gmail_integration',
@@ -54,8 +53,7 @@ INSTALLED_APPS = [
     'apps.productos',
     'apps.promociones',
     'apps.categorias',
-    
-
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
